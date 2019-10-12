@@ -124,3 +124,37 @@ spec:
         - name: host-volume-rocketmq-broker-slave-prod
           hostPath:
             path: /mnt/data/rocketmq-slave
+  ---
+  apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    namespace: rocketmq
+    name: mq-store-b-s-pv
+    labels:
+      pv: mq-store-b-s-pv
+  spec:
+    capacity:
+      storage: 1Gi
+    accessModes:
+      - ReadWriteOnce
+    persistentVolumeReclaimPolicy: Retain
+    storageClassName: nfs
+    nfs:
+      path: /mnt/hgfs/rokermq/store-b-s
+      server: 192.168.88.138
+  ---
+  apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    namespace: rocketmq
+    name: mq-store-b-s-pvc
+  spec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: nfs
+    selector:
+      matchLabels:
+        pv: mq-store-b-s-pv
