@@ -86,6 +86,28 @@ spec:
             # 120s 内, server 未启动则重启 container
             initialDelaySeconds: 120
             periodSeconds: 15
-
+          
+          volumeMounts:
+            - name: vol-logs
+              mountPath: /root/logs
       dnsPolicy: ClusterFirst
       restartPolicy: Always
+      
+      volumes:
+        - name: vol-logs
+          persistentVolumeClaim:
+            claimName: mq-logs-ui-pvc
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: rocketmq
+  name: mq-logs-ui-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs
