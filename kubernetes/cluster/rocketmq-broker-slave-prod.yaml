@@ -125,6 +125,6 @@ spec:
         - name: host-volume-rocketmq-broker-slave-prod
           persistentVolumeClaim:
             claimName:  mq-store-b-s-pvc
-        - name: host-volume-rocketmq-broker-master-prod-logs
+        - name: host-volume-rocketmq-broker-slave-prod-logs
           persistentVolumeClaim:
             claimName:  mq-logs-b-s-pvc
