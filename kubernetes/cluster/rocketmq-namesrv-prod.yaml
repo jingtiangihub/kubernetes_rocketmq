@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  namespace: rocketmq
+  # namespace: rocketmq
   name: service-rocketmq-namesrv-prod
   labels:
     app: service-rocketmq-namesrv-prod
