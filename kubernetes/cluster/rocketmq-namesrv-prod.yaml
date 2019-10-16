@@ -21,7 +21,7 @@ spec:
 kind: StatefulSet
 apiVersion: apps/v1
 metadata:
-  namespace: rocketmq
+#   namespace: rocketmq
   name: statefulset-rocketmq-namesrv-prod
   labels:
     app: statefulset-rocketmq-namesrv-prod
@@ -99,7 +99,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  namespace: rocketmq
+  # namespace: rocketmq
   name: mq-logs-pvc
 spec:
   accessModes:
