@@ -1,0 +1,78 @@
+
+# broker-master
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: rocketmq
+  name: mq-store-b-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 0.5Gi
+  storageClassName: nfs
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: rocketmq
+  name: mq-logs-b-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 0.5Gi
+  storageClassName: nfs
+  
+  
+  ---
+  
+# broker-slave
+  apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    # namespace: rocketmq
+    name: mq-store-b-s-pvc
+  spec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 0.5Gi
+    storageClassName: nfs
+    selector:
+      matchLabels:
+        pv: mq-store-b-s-pv
+
+---
+# console ng
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # namespace: rocketmq
+  name: mq-logs-ui-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 0.5Gi
+  storageClassName: nfs
+  
+---
+# namesrv
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # namespace: rocketmq
+  name: mq-logs-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 0.5Gi
+  storageClassName: nfs
