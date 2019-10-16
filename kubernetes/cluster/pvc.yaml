@@ -44,9 +44,6 @@ spec:
       requests:
         storage: 0.5Gi
     storageClassName: nfs
-    selector:
-      matchLabels:
-        pv: mq-store-b-s-pv
 
 ---
 apiVersion: v1
