@@ -71,6 +71,9 @@ spec:
             initialDelaySeconds: 120
             periodSeconds: 10
 
+          volumeMounts:
+            - name: vol-logs
+              mountPath: /root/logs
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -84,5 +87,24 @@ spec:
                         - pod-rocketmq-namesrv-prod
                 topologyKey: kubernetes.io/hostname
 
+      volumes:
+        - name: vol-logs
+          persistentVolumeClaim:
+            claimName: mq-logs-pvc
+            
       dnsPolicy: ClusterFirst
       restartPolicy: Always
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: rocketmq
+  name: mq-logs-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs
