@@ -91,7 +91,8 @@ spec:
           volumeMounts:
             - name: host-volume-rocketmq-broker-slave-prod
               mountPath: /opt/rocketmq/store
-
+            - name: host-volume-rocketmq-broker-slave-prod-logs
+              mountPath: /opt/logs
           readinessProbe:
             tcpSocket:
               port: 10909
