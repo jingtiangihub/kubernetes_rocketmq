@@ -14,7 +14,7 @@ data:
 kind: Service
 apiVersion: v1
 metadata:
-  namespace: rocketmq
+  # namespace: rocketmq
   name: service-rocketmq-broker-slave-prod
   labels:
     app: service-rocketmq-broker-slave-prod
@@ -38,7 +38,7 @@ spec:
 kind: StatefulSet
 apiVersion: apps/v1
 metadata:
-  namespace: rocketmq
+  # namespace: rocketmq
   name: statefulset-rocketmq-broker-slave-prod
   labels:
     app: statefulset-rocketmq-broker-slave-prod
@@ -128,7 +128,7 @@ spec:
   apiVersion: v1
   kind: PersistentVolume
   metadata:
-    namespace: rocketmq
+    # namespace: rocketmq
     name: mq-store-b-s-pv
     labels:
       pv: mq-store-b-s-pv
@@ -146,7 +146,7 @@ spec:
   apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
-    namespace: rocketmq
+    # namespace: rocketmq
     name: mq-store-b-s-pvc
   spec:
     accessModes:
