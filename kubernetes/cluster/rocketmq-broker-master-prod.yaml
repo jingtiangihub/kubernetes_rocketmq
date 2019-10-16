@@ -148,7 +148,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  namespace: rocketmq
+  # namespace: rocketmq
   name: mq-logs-b-pvc
 spec:
   accessModes:
