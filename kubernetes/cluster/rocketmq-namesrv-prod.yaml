@@ -73,7 +73,7 @@ spec:
 
           volumeMounts:
             - name: vol-logs
-              mountPath: /root/logs
+              mountPath: /opt/logs
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
