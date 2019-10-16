@@ -94,17 +94,3 @@ spec:
             
       dnsPolicy: ClusterFirst
       restartPolicy: Always
----
-
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  # namespace: rocketmq
-  name: mq-logs-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: nfs
