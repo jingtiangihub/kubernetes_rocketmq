@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  namespace: rocketmq
+  # namespace: rocketmq
   name: service-rocketmq-namesrv-prod
   labels:
     app: service-rocketmq-namesrv-prod
@@ -21,7 +21,7 @@ spec:
 kind: StatefulSet
 apiVersion: apps/v1
 metadata:
-  namespace: rocketmq
+#   namespace: rocketmq
   name: statefulset-rocketmq-namesrv-prod
   labels:
     app: statefulset-rocketmq-namesrv-prod
@@ -71,6 +71,9 @@ spec:
             initialDelaySeconds: 120
             periodSeconds: 10
 
+          volumeMounts:
+            - name: vol-logs
+              mountPath: /opt/logs
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -84,5 +87,10 @@ spec:
                         - pod-rocketmq-namesrv-prod
                 topologyKey: kubernetes.io/hostname
 
+      volumes:
+        - name: vol-logs
+          persistentVolumeClaim:
+            claimName: mq-logs-pvc
+            
       dnsPolicy: ClusterFirst
       restartPolicy: Always
